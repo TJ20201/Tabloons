@@ -32,3 +32,33 @@ def errorExit(errorInfo: str = "Unexpected Error"):
 	output("An error occured with the game and must exit. Information:", errorInfo)
 	input("> Press Enter <")
 	sys.exit(0)
+
+def getFontChar(lett: str) -> tuple:
+	"""
+	Gets the PILLOW string for a character from the custom font.
+	Returns: PILLOW string for eval()
+	"""
+	rows = {
+		"1": "abcdefghijklmnop",
+		"2": "qrstuvwxyz012345",
+		"3": "6789"
+	}
+	left = upper = right = lower = 0
+	if lett in rows["1"]: 
+		upper = 0
+		right = (rows["1"].rfind(lett)*8)+8
+		left = right-8
+		lower = upper+8
+	if lett in rows["2"]: 
+		upper = 8
+		right = (rows["2"].rfind(lett)*8)+8
+		left = right-8
+		lower = upper+8
+	if lett in rows["3"]: 
+		upper = 16
+		right = (rows["3"].rfind(lett)*8)+8
+		left = right-8
+		lower = upper+8
+	ret = (left, upper, right, lower)
+	#return ret
+	return f"Image.open(f'./assets/font.png').crop({ret}).resize((16, 16), Image.ANTIALIAS)"

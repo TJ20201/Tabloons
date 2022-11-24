@@ -29,7 +29,7 @@ for module in modules:
 	if not module == "functions.py":
 		try:
 			exec("import "+module)
-			output(f"Imported {module}", context="import")
+			output(f"Imported {module}", context="import:main")
 		except Exception as e:
 			errorExit(str(e))
 

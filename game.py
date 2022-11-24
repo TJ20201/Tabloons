@@ -27,7 +27,7 @@ for module in modules:
 	if not module == "functions.py":
 		try:
 			exec("import "+module)
-			output(f"Imported {module}", context="import")
+			output(f"Imported {module}", context="import:game")
 		except Exception as e:
 			errorExit(str(e))
 
@@ -64,6 +64,7 @@ def clearScene():
 	Clear the current game scene.
 	"""
 	for obj in objects: obj.destroy()
+	obj = []
 	imagedump = []
 
 def cropArgsFromDirection(direction:str):
