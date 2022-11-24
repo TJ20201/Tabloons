@@ -33,7 +33,7 @@ def errorExit(errorInfo: str = "Unexpected Error"):
 	input("> Press Enter <")
 	sys.exit(0)
 
-def getFontChar(lett: str) -> tuple:
+def getFontChar(lett: str) -> str:
 	"""
 	Gets the PILLOW string for a character from the custom font.
 	Returns: PILLOW string for eval()
@@ -41,7 +41,7 @@ def getFontChar(lett: str) -> tuple:
 	rows = {
 		"1": "abcdefghijklmnop",
 		"2": "qrstuvwxyz012345",
-		"3": "6789"
+		"3": "6789$:"
 	}
 	left = upper = right = lower = 0
 	if lett in rows["1"]: 
@@ -62,3 +62,10 @@ def getFontChar(lett: str) -> tuple:
 	ret = (left, upper, right, lower)
 	#return ret
 	return f"Image.open(f'./assets/font.png').crop({ret}).resize((16, 16), Image.ANTIALIAS)"
+
+def getIcon(ico: str) -> str:
+	"""
+	Get a specific icon.
+	Returns: STRING for eval()
+	"""
+	return f"Image.open(f'./assets/icon/{ico}.png')"

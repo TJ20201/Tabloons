@@ -17,8 +17,9 @@ modules = [module for module in properties["requirements"].split(",")]
 try:
 	from functions import *
 	import game
+	import inventory
 except Exception as e:
-	print("A required module has failed to import.")
+	print("A required internal module has failed to import.")
 	exit() # Force quit normally, or error the code and quit via error if exit is not a function.
 
 # Prevent running from non-main context
@@ -33,6 +34,12 @@ for module in modules:
 		except Exception as e:
 			errorExit(str(e))
 
+# Create Session File
+if (os.path.exists(".session")):
+	os.remove(".session")
+with open(".session", "a") as sessfile:
+	sessfile.write("dbs=0\ninv=[]")
+
 # Window Creation
 mainWindow = tkinter.Tk()
 mainWindow.geometry("512x512")
@@ -43,8 +50,16 @@ mainWindow.bind("<KeyPress>", game.keybinds)
 gameFrame = game.createWindow(mainWindow)
 gameFrame.place(x=0,y=0,width=256,height=256)
 
-inventoryFrame = tkinter.Frame(mainWindow, width=512, height=256, bg="#AAAAAA")
+inventoryFrame = inventory.createWindow(mainWindow)
 inventoryFrame.place(x=0,y=256,width=512,height=256)
 
+def windowExitMethod():
+	if (os.path.exists(".session")):
+		os.remove(".session")
+	mainWindow.destroy()
+
 # Begin Game
+mainWindow.protocol("WM_DELETE_WINDOW", windowExitMethod)
 mainWindow.mainloop()
+
+# Remove Session File

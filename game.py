@@ -16,7 +16,7 @@ modules = [module for module in properties["requirements"].split(",")]
 try:
 	from functions import *
 except Exception as e:
-	print("A required module has failed to import.")
+	print("A required internal module has failed to import.")
 	exit() # Force quit normally, or error the code and quit via error if exit is not a function.
 
 # Prevent running from main context
@@ -53,7 +53,7 @@ def createWindow(parent):
 	"""
 	Create the game window.
 	"""
-	mainWindow = tkinter.Frame(parent, width=256, height=256, bg="#FFFFFF")
+	mainWindow = tkinter.Frame(parent, width=256, height=256, bg="#47A558")
 	important["window"] = mainWindow
 	updateScene(mainWindow)
 	return mainWindow
