@@ -20,7 +20,7 @@ def output(*args, severity:int=outputSeverity["MESSAGE"], context:str="main"):
 	if severity == outputSeverity["WARNING"]: svt = "WARNING"
 	if severity == outputSeverity["ERROR"]: svt = "ERROR"
 	if severity == outputSeverity["FATAL"]: svt = "FATAL"
-	argt = " ".join(args)
+	argt = " ".join([str(arg) for arg in args])
 	print(f"[{svt.upper()}][{context.upper()}] {argt}")
 
 def errorExit(errorInfo: str = "Unexpected Error"):

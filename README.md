@@ -5,12 +5,12 @@ The game's development first started on the 22nd of November, 2022 at approximat
 ## Roadmap
 <details><summary>The plan for Tabloons Version 1.0.0</summary>
 	<br>
-	[ ]: Uncompleted
-	[x]: Completed
+	[ ]: Uncompleted<br>
+	[x]: Completed<br>
 	---
 
-	[ ] - Basic python topdown Movement system within TKinter 512x512 window
-	[ ] - 256x256 top left window portion reserved for game testing frame of movement
+	[x] - Basic python topdown Movement system within TKinter 512x512 window
+	[x] - 256x256 top left window portion reserved for game testing frame of movement
 	[ ] - Player sprite image (16x16)
 	[ ] - First Region map, 'Bloontown', 2048x2048 image for base map (32 pixels near edge will be forest/map border)
 	[ ] - Map chunk split into 8 chunks which load when you walk out of bounds of current chunk (256x256 chunks)
