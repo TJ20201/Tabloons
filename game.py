@@ -77,7 +77,7 @@ def cropArgsFromDirection(direction:str):
 	if direction == "right": return (48, 0, 64, 16)
 	return (0, 0, 16, 16) # If nothing found, return first 16x16 pixels.
 
-def createPlayer(parent, direction:str, skin:str="template"):
+def createPlayer(parent, direction:str, skin:str="player"):
 	from PIL import Image, ImageTk
 	"""
 	Create the player object.
@@ -90,7 +90,7 @@ def createPlayer(parent, direction:str, skin:str="template"):
 
 	tkimage = ImageTk.PhotoImage(Image.open(f'./assets/character/{skin}.png').crop(cropArgsFromDirection(direction)))
 	imagedump.append(tkimage)
-	player = tkinter.Label(parent, image=tkimage)
+	player = tkinter.Label(parent, image=tkimage, bg='#47A558')
 	objects.append(player)
 	player.place(x=impcache["player"]["loc"][0]+8, y=impcache["player"]["loc"][1]+8, width=16, height=16)
 
